@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.auto-style1 {
+				background-color: #FFFF00;
+				}
+		</style>
+		
+		<script>
+			var counter = 0;
+			var sum = 0;
+
+			//function for filling the table
+			function filltable() {
+
+				//disabling the button
+  				document.getElementById("b1").disabled = "disabled";
+  
+  				var mytable=document.getElementById("mytable");
+ 
+				//filling the table with random numbers and colors
+  				for (i = 0; i < mytable.rows.length; i++) {
+    				for (j = 0; j < mytable.rows[i].cells.length; j++) {
+
+						//creating the random number for the cell
+      					var n = Math.ceil(Math.random()*10)
+      					mytable.rows[i].cells[j].innerHTML = n;
+
+						//getting a random number 0 or 1 and deciding the color
+      					var c=Math.round(Math.random())
+      					if (c == 0) {
+        					mytable.rows[i].cells[j].style.backgroundColor = "green";
+      					}
+      					else {
+       						mytable.rows[i].cells[j].style.backgroundColor = "red";
+      					}      
+    				}
+  				}
+			}
+
+			function clickcell(e) {
+  				var t;
+  				if (window.event) { 
+    				t = window.event.srcElement;
+  				}
+  				else {
+    				t = e.target;
+  				} 
+  				sum += parseInt(t.innerHTML);
+  				counter++;
+  				if (t.style.backgroundColor == "green") {
+    				t.innerHTML++;
+    				t.style.backgroundColor = "red";
+ 				 }
+  				else {
+    				t.innerHTML--;
+    				t.style.backgroundColor = "green";
+  				}
+  				if (counter == 10) {
+    				document.getElementById("b1").disabled = "";
+    				alert(sum / 10);
+    				counter = 0;
+    				sum = 0;
+  				} 
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<input id="b1" type="button" value="Fill Table" onclick="filltable()">
+		<table id="mytable" class="auto-style1" onclick="clickcell(event)" style="width: 80%">
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+	</body>
+</html>

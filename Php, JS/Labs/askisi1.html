@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var t;
+			var timeleft = 30;
+			var r;
+			var swstes = 0;
+			var oles = 0;
+
+			function startgame() {
+				r = Math.ceil(Math.random()*9);
+				document.getElementById("rnd").innerHTML = r;
+				var mytable = document.getElementById("mytable");
+				for (i = 0; i < mytable.rows.length; i++) { //grammes
+					for(j = 0; j < mytable.rows[i].cells.length; j++) { //kelia kathe gramis
+						var r2 = Math.ceil(Math.random()*100);
+						mytable.rows[i].cells[j].innerHTML = r2;
+					}
+				}
+				t = window.setInterval("settimer()", 1000);
+			}
+
+			function settimer() {
+				timeleft--;
+				document.getElementById("mytimer").innerHTML = timeleft;
+				if (timeleft == 0) {
+					window.clearInterval(t);
+					alert("pososto epityxias = " + (swstes / oles) * 100);
+					timeleft = 30;
+				}
+			}
+
+			function checkdiairesi(e) {
+				oles++;
+				var t;
+				if (e.target) {
+					t = e.target
+				}
+				else {
+					t = e.srcElement
+				}
+
+				if ((t.innerHTML % r) == 0){
+					t.style.backgroundColor = "green";
+					swstes++;
+				}
+				else {
+					t.style.backgroundColor = "red";
+				}	
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="Start" onclick="startgame()"><br>
+		<div id="rnd"></div><br>
+		<table id="mytable" border="1" style="width: 50%" onclick="checkdiairesi(event)">
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="height: 23px"></td>
+				<td style="height: 23px"></td>
+				<td style="height: 23px"></td>
+				<td style="height: 23px"></td>
+				<td style="height: 23px"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<div id="mytimer"></div>
+	</body>
+</html>

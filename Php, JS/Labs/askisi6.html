@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			//the usual images array for the slideshow
+			var imgs = new Array()
+			imgs[0] = "images/1.jpg";
+			imgs[1] = "images/2.gif";
+			imgs[2] = "images/3.gif";
+			imgs[3] = "images/4.gif";
+			imgs[4] = "images/5.gif";
+			imgs[5] = "images/6.gif";
+
+			var index = 0;
+			var timer;
+
+			//starting the slideshow and disabling the buttons
+			function start() {
+  				timer = window.setInterval("next()", 1000);
+  				document.getElementById("b1").disabled = "disabled";
+  				document.getElementById("b2").disabled = "disabled";
+			}
+
+			//function to show the next image in the slideshow.. like the simple slideshow with some more!!!
+			function next() {
+  				var pics = document.images;
+  
+				//deacreasing the dimmensions for the previous thumbnail
+  				index2 = index%3;
+  				pics[index2].width = 50;
+  				pics[index2].height = 50;
+  
+				//the usual code of a slideshow
+  				index++;
+  				if (index == imgs.length) index = 0;
+  				document.getElementById("mainimg").src = imgs[index];
+
+				//when the slideshow needs to change
+  				if ((index%3) == 0) shownextimages();
+  
+				//increasing the dimmensions for the thumbnail just shown
+  				index2=index%3;
+  				pics[index2].width = 80;
+  				pics[index2].height = 80;
+
+			}
+
+			//showing the next three images in the thumbnails
+			function shownextimages() {
+
+  				var pics = document.images;
+
+				//showing the next three images from the slideshow table (imgs) in the thumbnail places (pics[0,1,2])
+  				pics[0].src = imgs[index];
+  				pics[1].src = imgs[index+1];
+  				pics[2].src = imgs[index+2];
+
+			}
+
+			function stop(e) {
+ 				var t;
+  				if (window.event) { 
+    				t = window.srcElement;
+  				}
+  				else {
+    				t = e.target
+  				} 
+
+				//if the event started not from the start button... stop the slideshow and enable the buttons
+  				if (t.id!="b2") {
+    				window.clearInterval(timer);
+    				document.getElementById("b1").disabled = "";
+    				document.getElementById("b2").disabled = "";
+    			}
+			}
+		</script>
+	</head>
+
+	<body onload="start()" onclick="stop(event)">
+		<p>
+			<img alt="" height="50" src="images/1.jpg" width="50">
+			<img alt="" height="50" src="images/2.gif" width="50">
+			<img alt="" height="50" src="images/3.gif" width="50">
+		</p>
+
+		<p>
+			<img height="250" src="images/1.jpg" width="250" id="mainimg">
+		</p>
+		<input type="button" value="Next" id="b1" onclick="next()">
+		<input type="button" value="Start" id="b2" onclick="start()">
+	</body>
+</html>

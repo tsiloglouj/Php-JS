@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var intervalId;
+
+			function fill(e) {
+				var atr = document.createAttribute("disabled");
+				atr.nodeValue = "disabled";
+				document.getElementById("b1").setAttributeNode(atr);
+				var myT = document.getElementById("mytable");
+				for (i = 0; i < myT.rows.length; i++) {
+					for (j = 0; j < myT.rows[i].cells.length; j++) {
+						myT.rows[i].cells[j].innerHTML = Math.floor(Math.random()*10);
+					}
+				}
+				intervalId = setInterval("xronometro()",1000);
+			}
+
+
+			function xronometro() {
+				var x = document.getElementById("p3").innerHTML;
+				if(x >= 1) document.getElementById("p3").innerHTML = x - 1;
+				if(x == 0) {
+					document.getElementById("p3").innerHTML = "Green: " + cCounter + " Red: " + wCounter; 
+					window.clearInterval(intervalId);
+					document.getElementById("b1").disabled='';
+				}
+			}
+
+			var cCounter = 0;
+			var wCounter = 0;
+
+			function counter(e) {
+				if(e.target.tagName == "TD") {
+					var a = parseInt(document.getElementById("p2").innerHTML);
+					var b = parseInt(e.target.innerHTML);
+					if(e.target.innerHTML > 5) {
+						e.target.style.backgroundColor = "green";
+						cCounter ++;
+					}
+					else {
+						e.target.style.backgroundColor = "red";
+						wCounter ++;
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body onclick="counter(event)">
+		<input name="Button1" type="button" value="Start - (>5)" onclick="fill()" id="b1"/><br/>
+		<table id="mytable" border="1" width="20%">
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<p id="p2"></p>
+		<p id="p3">10</p>
+	</body>
+</html>

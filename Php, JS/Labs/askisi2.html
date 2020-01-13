@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var timer;
+
+			function movepic(e) {
+				var t;
+				if (e.target) {
+					t = e.target
+				}
+				else {
+					t = e.srcElement
+				}
+				var pinakas2 = document.getElementById('pinakas2');
+				var c = pinakas2.rows[0].insertCell();
+				c.innerHTML = '<img src=' + t.src + ' width="100" height="100">'
+				t.parentNode.innerHTML = "";
+			}
+
+			function returnpics() {
+				timer = window.setInterval("returnpic()",3000);
+			}
+
+			function returnpic() {
+				var pinakas1 = document.getElementById('pinakas1');
+				var pinakas2 = document.getElementById('pinakas2');
+				var c = pinakas1.rows[0].insertCell();
+				c.innerHTML = pinakas2.rows[0].cells[0].innerHTML;
+				//pinakas2.rows[0].cells[0].innerHTML=""; lathos...
+				pinakas2.rows[0].deleteCell(0);
+				if (pinakas2.rows[0].cells.length == 0) {
+					window.clearInterval(timer)
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="return pics" onclick="returnpics()" />
+		<table id ="pinakas1" onclick="movepic(event)">
+			<tr>
+				<td><img src="1.jpg" width="100" height="100"/></td>
+				<td><img src="2.jpg" width="100" height="100"/></td>
+				<td><img src="3.jpg" width="100" height="100"/></td>
+				<td><img src="4.jpg" width="100" height="100"/></td>
+			</tr>
+		</table>
+		<table id="pinakas2">
+			<tr></tr>
+		</table>
+	</body>
+</html>

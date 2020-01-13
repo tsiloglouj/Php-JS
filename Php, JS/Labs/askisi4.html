@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <textarea id="titletext" cols="20" rows="2"></textarea><br>
+		Authors:<input id="authorstext" type="text"><br>
+		Theme:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input id="subjecttext" type="text" readonly="readonly"><br>
+		<input type="button" value="Add theme" onclick="displaydiv()"><br><br>
+		<div id="subjectsdiv" style="display:none">
+			<select id="subjectsselect">
+				<option value="Ενότητα 1">Theme 1</option>
+				<option value="Ενότητα 2">Theme 2</option>
+				<option value="Ενότητα 3">Theme 3</option>
+				<option value="Ενότητα 4">Theme 4</option>
+			</select>
+			<input type="button" value="Add" onclick="addsubject()">
+			<input type="button" value="Close" onclick="hidediv()">
+		</div><br>
+		<input type="button" value="Submit" onclick="addreference()">
+		<div id="references"></div>
+
+	
+		<script>
+			function displaydiv() {
+				document.getElementById("subjectsdiv").style.display="";
+			}
+		
+			function hidediv() {
+				document.getElementById("subjectsdiv").style.display="none";
+			}
+		
+			function addsubject() {
+				var s = document.getElementById("subjectsselect").value;
+				document.getElementById("subjecttext").value += (s + ", ");
+			}
+		
+			function addreference() {
+				var t = document.getElementById("titletext").value;
+				var a = document.getElementById("authorstext").value;
+				var s = document.getElementById("subjecttext").value;
+				var p = document.createElement("P");
+				p.innerHTML = a + ", "+ t + ", " + s;
+				document.getElementById("references").appendChild(p);
+			}
+		</script>
+	
+	</body>
+</html>

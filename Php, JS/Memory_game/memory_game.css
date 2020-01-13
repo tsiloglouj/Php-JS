@@ -1,0 +1,42 @@
+﻿div#memory_board{
+	border: white 5px solid;
+	width:750px;
+	height:500px;
+	padding:24px;
+	margin:0px auto;
+	
+}
+div#memory_board > div{
+	border:white 2px solid;
+	width:71px;
+	height:71px;
+	float:left;
+	margin:5px;
+	padding:20px;
+	font-size:65px;
+	cursor:pointer;
+	text-align:center;
+	font-family:"Courier New";
+
+}
+
+body{
+	background-image:url('piximage.jpg');
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+}
+
+.pika1{
+	width:180px;
+	height:150px;
+	float:left;
+	padding-left:455px;
+}
+
+.pika2{
+	width:180px;
+	height:150px;
+	float:right;
+	padding-right:415px;
+}

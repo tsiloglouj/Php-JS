@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+	<!-- 
+		<script>
+			function draw_empty_board(){
+				var table = document.getElementById("myTable");
+					for(int i=0; i<=7; i++){
+						row = table.insertRow(i);
+							for(int j=0; j<=7; j++){
+								cell1 = row.insertCell(j);
+							}
+					}
+			}
+		
+		</script>
+	-->
+	
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+		
+	<!-- BOOTSTRAP core CSS -->
+		<link href="bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/mychess.css" rel="stylesheet"/>
+		<script src="bootstrap/jquery-3.2.1.min.js"></script>
+		<script src="bootstrap/bootstrap.min.js"></script>
+		<script src="mychess.js"></script>
+	
+</head>
+
+<body>
+	<h1>Σκακι</h1>
+	<div id="chess_board"></div>
+
+<div>	
+
+	<input type="button" id="start" value="ΕΝΑΡΞΗ" /><br>
+		Παίκτης Α: <input id="first" type="text" value="" /><br>
+		Παίκτης Β: <input id="second" type="text" value="" /><br>
+		Επόμενη Κίνηση (x y x y): <input id="move" type="text" value=""/><br>
+	<input type="button" id="makemove" value="ΚΑΝΕ ΚΙΝΗΣΗ" />
+	
+</div>
+
+</body>
+
+</html>
